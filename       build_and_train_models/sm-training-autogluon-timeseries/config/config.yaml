@@ -1,0 +1,104 @@
+# Demand Forecasting Configuration
+# ================================
+
+aws:
+  region: "us-east-1"
+  role_arn: ""  # Your SageMaker execution role ARN
+  s3_bucket: ""  # Your S3 bucket for data and model artifacts
+  s3_prefix: "demand-forecasting"
+
+data:
+  # Data paths
+  train_path: "data/train.csv"
+  test_path: "data/test.csv"
+  
+  # Column names
+  item_id_column: "item_id"
+  timestamp_column: "timestamp"
+  target_column: "target"
+  
+  # Optional feature columns
+  static_features: []  # e.g., ["category", "brand", "region"]
+  known_covariates: []  # e.g., ["price", "promotion", "holiday"]
+  
+  # Time series configuration
+  freq: "D"  # D=daily, W=weekly, M=monthly, H=hourly
+  date_format: "%Y-%m-%d"
+
+model:
+  # Forecast configuration
+  prediction_length: 30  # Number of time steps to forecast
+  
+  # AutoGluon settings
+  presets: "medium_quality"  # Options: fast_training, medium_quality, high_quality, best_quality
+  time_limit: 3600  # Training time limit in seconds
+  
+  # Model selection (set to null to use all)
+  models:
+    - DeepAR
+    - ETS
+    - ARIMA
+    - Theta
+    - AutoETS
+    - RecursiveTabular
+    - DirectTabular
+    - TemporalFusionTransformer
+  
+  # Hyperparameters (optional, AutoGluon will tune if not specified)
+  hyperparameters:
+    DeepAR:
+      num_layers: 2
+      hidden_size: 40
+      dropout_rate: 0.1
+    TemporalFusionTransformer:
+      hidden_size: 32
+      num_heads: 4
+
+training:
+  # SageMaker training configuration
+  instance_type: "ml.m5.xlarge"
+  instance_count: 1
+  volume_size: 50  # GB
+  max_runtime: 86400  # seconds (24 hours)
+  
+  # Hyperparameter tuning
+  enable_tuning: false
+  tuning_jobs: 10
+  
+  # Data splits
+  validation_split: 0.2
+  
+  # Checkpointing
+  enable_checkpointing: true
+  checkpoint_interval: 300  # seconds
+
+inference:
+  # Endpoint configuration
+  endpoint_name: "demand-forecast-endpoint"
+  instance_type: "ml.m5.large"
+  instance_count: 1
+  
+  # Batch transform settings
+  batch_instance_type: "ml.m5.xlarge"
+  max_concurrent_transforms: 4
+  max_payload: 6  # MB
+  
+  # Output configuration
+  quantiles: [0.1, 0.25, 0.5, 0.75, 0.9]  # Prediction intervals
+
+evaluation:
+  metrics:
+    - MASE  # Mean Absolute Scaled Error
+    - RMSE  # Root Mean Squared Error
+    - MAPE  # Mean Absolute Percentage Error
+    - WAPE  # Weighted Absolute Percentage Error
+    - sMAPE  # Symmetric MAPE
+  
+  # Backtesting
+  num_backtests: 3
+  backtest_windows: null  # Auto-calculate based on prediction_length
+
+logging:
+  level: "INFO"
+  log_to_cloudwatch: true
+  log_group: "/aws/sagemaker/demand-forecasting"
