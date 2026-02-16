@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 850" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <filter id="sh3">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arr3" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrGreen" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="850" fill="url(#bg3)" rx="12"/>
+
+  <!-- Title -->
+  <text x="600" y="48" text-anchor="middle" fill="#f8fafc" font-size="26" font-weight="700">Delivery Optimization Logic</text>
+  <text x="600" y="76" text-anchor="middle" fill="#94a3b8" font-size="14">How consumption forecasts become delivery recommendations</text>
+
+  <!-- ===== STEP 1: INPUT ===== -->
+  <rect x="40" y="110" width="340" height="190" rx="12" fill="#1e293b" stroke="#3b82f6" stroke-width="2" filter="url(#sh3)"/>
+  <rect x="40" y="110" width="340" height="40" rx="12" fill="#3b82f6"/>
+  <rect x="40" y="138" width="340" height="12" fill="#3b82f6"/>
+  <text x="210" y="136" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">1. INPUTS</text>
+
+  <text x="65" y="178" fill="#93c5fd" font-size="12" font-weight="600">Per-Tank State:</text>
+  <text x="65" y="198" fill="#94a3b8" font-size="11">current_level: 80 gal</text>
+  <text x="65" y="214" fill="#94a3b8" font-size="11">tank_capacity: 275 gal</text>
+  <text x="65" y="230" fill="#94a3b8" font-size="11">level_pct: 29.1%</text>
+
+  <text x="240" y="178" fill="#fcd34d" font-size="12" font-weight="600">10-Day Forecast:</text>
+  <text x="240" y="198" fill="#94a3b8" font-size="11">mean: 5.2 gal/day</text>
+  <text x="240" y="214" fill="#94a3b8" font-size="11">p90: 7.1 gal/day</text>
+  <text x="240" y="230" fill="#94a3b8" font-size="11">total_p90: 71 gal</text>
+
+  <text x="65" y="258" fill="#6ee7b7" font-size="12" font-weight="600">Constraints:</text>
+  <text x="65" y="278" fill="#94a3b8" font-size="11">target_fill: 85% | reorder: 25% | emergency: 10% | buffer: 2 days</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="380" y1="205" x2="430" y2="205" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr3)"/>
+
+  <!-- ===== STEP 2: URGENCY CLASSIFICATION ===== -->
+  <rect x="440" y="110" width="320" height="190" rx="12" fill="#1e293b" stroke="#f59e0b" stroke-width="2" filter="url(#sh3)"/>
+  <rect x="440" y="110" width="320" height="40" rx="12" fill="#d97706"/>
+  <rect x="440" y="138" width="320" height="12" fill="#d97706"/>
+  <text x="600" y="136" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">2. URGENCY CLASSIFICATION</text>
+
+  <!-- Tank level gauge -->
+  <rect x="470" y="165" width="260" height="24" rx="4" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <!-- Emergency zone -->
+  <rect x="470" y="165" width="26" height="24" rx="4" fill="#ef4444" opacity="0.8"/>
+  <text x="483" y="181" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">10%</text>
+  <!-- Urgent zone -->
+  <rect x="496" y="165" width="39" height="24" fill="#f59e0b" opacity="0.8"/>
+  <text x="516" y="181" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">25%</text>
+  <!-- Normal zone -->
+  <rect x="535" y="165" width="39" height="24" fill="#3b82f6" opacity="0.8"/>
+  <text x="554" y="181" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">40%</text>
+  <!-- Low zone -->
+  <rect x="574" y="165" width="156" height="24" rx="4" fill="#10b981" opacity="0.6"/>
+  <text x="652" y="181" text-anchor="middle" fill="#fff" font-size="8" font-weight="700">40%+</text>
+
+  <!-- Urgency labels -->
+  <rect x="470" y="200" width="60" height="22" rx="4" fill="#ef4444"/>
+  <text x="500" y="215" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">EMER</text>
+
+  <rect x="538" y="200" width="60" height="22" rx="4" fill="#f59e0b"/>
+  <text x="568" y="215" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">URGENT</text>
+
+  <rect x="606" y="200" width="60" height="22" rx="4" fill="#3b82f6"/>
+  <text x="636" y="215" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">NORMAL</text>
+
+  <rect x="674" y="200" width="50" height="22" rx="4" fill="#10b981"/>
+  <text x="699" y="215" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">LOW</text>
+
+  <text x="600" y="248" text-anchor="middle" fill="#94a3b8" font-size="11">level_pct = current_level / tank_capacity</text>
+  <text x="600" y="266" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="600">29.1% → URGENT</text>
+  <text x="600" y="286" text-anchor="middle" fill="#94a3b8" font-size="11">Below reorder threshold (25%) → needs delivery soon</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="760" y1="205" x2="810" y2="205" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr3)"/>
+
+  <!-- ===== STEP 3: VOLUME CALCULATION ===== -->
+  <rect x="820" y="110" width="340" height="190" rx="12" fill="#1e293b" stroke="#10b981" stroke-width="2" filter="url(#sh3)"/>
+  <rect x="820" y="110" width="340" height="40" rx="12" fill="#059669"/>
+  <rect x="820" y="138" width="340" height="12" fill="#059669"/>
+  <text x="990" y="136" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">3. VOLUME CALCULATION</text>
+
+  <text x="845" y="178" fill="#6ee7b7" font-size="12" font-weight="600">Target level:</text>
+  <text x="845" y="198" fill="#94a3b8" font-size="11">target = capacity x target_fill_pct</text>
+  <text x="845" y="214" fill="#cbd5e1" font-size="11">= 275 x 0.85 = 233.8 gal</text>
+
+  <text x="845" y="240" fill="#6ee7b7" font-size="12" font-weight="600">Delivery volume:</text>
+  <text x="845" y="260" fill="#94a3b8" font-size="11">volume = target_level - current_level</text>
+  <text x="845" y="276" fill="#cbd5e1" font-size="11">= 233.8 - 80 = 153.8 gal</text>
+
+  <rect x="845" y="285" width="290" height="4" rx="2" fill="#334155"/>
+  <text x="990" y="298" text-anchor="middle" fill="#10b981" font-size="13" font-weight="700">Deliver 154 gallons</text>
+
+  <!-- ===== STEP 4: COVERAGE + SAFETY ===== -->
+  <rect x="40" y="340" width="540" height="170" rx="12" fill="#1e293b" stroke="#8b5cf6" stroke-width="2" filter="url(#sh3)"/>
+  <rect x="40" y="340" width="540" height="40" rx="12" fill="#7c3aed"/>
+  <rect x="40" y="368" width="540" height="12" fill="#7c3aed"/>
+  <text x="310" y="366" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">4. COVERAGE &amp; SAFETY ANALYSIS</text>
+
+  <!-- Timeline visualization -->
+  <text x="65" y="408" fill="#c4b5fd" font-size="12" font-weight="600">Inventory projection after delivery (using p90 forecast):</text>
+
+  <rect x="65" y="425" width="490" height="30" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <!-- Day labels -->
+  <text x="90" y="445" fill="#94a3b8" font-size="9">Day 1</text>
+  <text x="140" y="445" fill="#94a3b8" font-size="9">2</text>
+  <text x="175" y="445" fill="#94a3b8" font-size="9">3</text>
+  <text x="210" y="445" fill="#94a3b8" font-size="9">4</text>
+  <text x="245" y="445" fill="#94a3b8" font-size="9">5</text>
+  <text x="280" y="445" fill="#94a3b8" font-size="9">6</text>
+  <text x="315" y="445" fill="#94a3b8" font-size="9">7</text>
+  <text x="350" y="445" fill="#94a3b8" font-size="9">8</text>
+  <text x="385" y="445" fill="#94a3b8" font-size="9">9</text>
+  <text x="420" y="445" fill="#94a3b8" font-size="9">10</text>
+
+  <!-- Green bars showing remaining inventory -->
+  <rect x="80" y="427" width="35" height="26" rx="3" fill="#10b981" opacity="0.9"/>
+  <rect x="120" y="427" width="35" height="26" rx="3" fill="#10b981" opacity="0.82"/>
+  <rect x="160" y="427" width="35" height="26" rx="3" fill="#10b981" opacity="0.74"/>
+  <rect x="200" y="427" width="35" height="26" rx="3" fill="#10b981" opacity="0.66"/>
+  <rect x="240" y="427" width="35" height="26" rx="3" fill="#10b981" opacity="0.58"/>
+  <rect x="280" y="427" width="35" height="26" rx="3" fill="#10b981" opacity="0.50"/>
+  <rect x="320" y="427" width="35" height="26" rx="3" fill="#10b981" opacity="0.42"/>
+  <rect x="360" y="427" width="35" height="26" rx="3" fill="#f59e0b" opacity="0.6"/>
+  <rect x="400" y="427" width="35" height="26" rx="3" fill="#f59e0b" opacity="0.4"/>
+  <rect x="440" y="427" width="35" height="26" rx="3" fill="#ef4444" opacity="0.5"/>
+
+  <text x="65" y="480" fill="#94a3b8" font-size="11">After delivery: 233.8 gal → consuming ~7.1 gal/day (p90) → coverage ≈ 10 days</text>
+  <text x="65" y="498" fill="#c4b5fd" font-size="12" font-weight="600">coverage_days = (post_delivery_level) / avg_p90_consumption</text>
+
+  <!-- Arrow 4→5 -->
+  <line x1="310" y1="510" x2="310" y2="540" stroke="#94a3b8" stroke-width="2" marker-end="url(#arr3)"/>
+
+  <!-- ===== STEP 5: RECOMMENDATION ===== -->
+  <rect x="40" y="550" width="540" height="140" rx="12" fill="#064e3b" stroke="#10b981" stroke-width="2" filter="url(#sh3)"/>
+  <rect x="40" y="550" width="540" height="40" rx="12" fill="#059669"/>
+  <rect x="40" y="578" width="540" height="12" fill="#059669"/>
+  <text x="310" y="576" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">5. DELIVERY RECOMMENDATION</text>
+
+  <text x="80" y="616" fill="#fff" font-size="13" font-weight="600">TANK_0001 (Residential, 275 gal)</text>
+
+  <rect x="80" y="628" width="100" height="24" rx="5" fill="#f59e0b"/>
+  <text x="130" y="644" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">URGENT</text>
+
+  <text x="200" y="644" fill="#94a3b8" font-size="12">Volume: <tspan fill="#6ee7b7" font-weight="600">154 gal</tspan></text>
+  <text x="360" y="644" fill="#94a3b8" font-size="12">Fill: <tspan fill="#6ee7b7" font-weight="600">85%</tspan></text>
+  <text x="450" y="644" fill="#94a3b8" font-size="12">Coverage: <tspan fill="#6ee7b7" font-weight="600">10 days</tspan></text>
+
+  <text x="80" y="672" fill="#94a3b8" font-size="11">Reasoning: Below reorder point (29%). p90 forecast indicates 71 gal needed over 10 days.</text>
+  <text x="80" y="688" fill="#94a3b8" font-size="11">Delivery to 85% fill provides sufficient coverage through the forecast horizon.</text>
+
+  <!-- ===== STEP 6: MULTI-TANK SCHEDULER ===== -->
+  <rect x="620" y="340" width="540" height="350" rx="12" fill="#1e293b" stroke="#06b6d4" stroke-width="2" filter="url(#sh3)"/>
+  <rect x="620" y="340" width="540" height="40" rx="12" fill="#0891b2"/>
+  <rect x="620" y="368" width="540" height="12" fill="#0891b2"/>
+  <text x="890" y="366" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">6. MULTI-TANK SCHEDULER</text>
+
+  <text x="645" y="408" fill="#67e8f9" font-size="12" font-weight="600">Priority Queue (sorted by urgency):</text>
+
+  <!-- Priority table -->
+  <rect x="645" y="420" width="490" height="26" rx="4" fill="#164e63"/>
+  <text x="660" y="438" fill="#67e8f9" font-size="10" font-weight="700">RANK</text>
+  <text x="720" y="438" fill="#67e8f9" font-size="10" font-weight="700">TANK</text>
+  <text x="820" y="438" fill="#67e8f9" font-size="10" font-weight="700">URGENCY</text>
+  <text x="920" y="438" fill="#67e8f9" font-size="10" font-weight="700">VOLUME</text>
+  <text x="1020" y="438" fill="#67e8f9" font-size="10" font-weight="700">TYPE</text>
+
+  <!-- Row 1 -->
+  <rect x="645" y="450" width="490" height="26" rx="0" fill="#0f172a" opacity="0.5"/>
+  <text x="665" y="468" fill="#f8fafc" font-size="11">1</text>
+  <text x="720" y="468" fill="#f8fafc" font-size="11">TANK_0023</text>
+  <rect x="814" y="455" width="70" height="18" rx="4" fill="#ef4444"/>
+  <text x="849" y="468" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">EMER</text>
+  <text x="920" y="468" fill="#f8fafc" font-size="11">4,250 gal</text>
+  <text x="1020" y="468" fill="#94a3b8" font-size="11">industrial</text>
+
+  <!-- Row 2 -->
+  <rect x="645" y="476" width="490" height="26" rx="0" fill="#1e293b" opacity="0.5"/>
+  <text x="665" y="494" fill="#f8fafc" font-size="11">2</text>
+  <text x="720" y="494" fill="#f8fafc" font-size="11">TANK_0007</text>
+  <rect x="814" y="481" width="70" height="18" rx="4" fill="#ef4444"/>
+  <text x="849" y="494" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">EMER</text>
+  <text x="920" y="494" fill="#f8fafc" font-size="11">850 gal</text>
+  <text x="1020" y="494" fill="#94a3b8" font-size="11">commercial</text>
+
+  <!-- Row 3 -->
+  <rect x="645" y="502" width="490" height="26" rx="0" fill="#0f172a" opacity="0.5"/>
+  <text x="665" y="520" fill="#f8fafc" font-size="11">3</text>
+  <text x="720" y="520" fill="#f8fafc" font-size="11">TANK_0001</text>
+  <rect x="814" y="507" width="70" height="18" rx="4" fill="#f59e0b"/>
+  <text x="849" y="520" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">URGENT</text>
+  <text x="920" y="520" fill="#f8fafc" font-size="11">154 gal</text>
+  <text x="1020" y="520" fill="#94a3b8" font-size="11">residential</text>
+
+  <!-- Row 4 -->
+  <rect x="645" y="528" width="490" height="26" rx="0" fill="#1e293b" opacity="0.5"/>
+  <text x="665" y="546" fill="#f8fafc" font-size="11">4</text>
+  <text x="720" y="546" fill="#f8fafc" font-size="11">TANK_0012</text>
+  <rect x="814" y="533" width="70" height="18" rx="4" fill="#3b82f6"/>
+  <text x="849" y="546" text-anchor="middle" fill="#fff" font-size="10" font-weight="600">NORMAL</text>
+  <text x="920" y="546" fill="#f8fafc" font-size="11">620 gal</text>
+  <text x="1020" y="546" fill="#94a3b8" font-size="11">commercial</text>
+
+  <!-- Row 5 -->
+  <rect x="645" y="554" width="490" height="26" rx="0" fill="#0f172a" opacity="0.5"/>
+  <text x="665" y="572" fill="#94a3b8" font-size="11">...</text>
+  <text x="720" y="572" fill="#94a3b8" font-size="11">...</text>
+  <text x="920" y="572" fill="#94a3b8" font-size="11">...</text>
+
+  <!-- Capacity constraint -->
+  <rect x="645" y="590" width="490" height="3" rx="1" fill="#334155"/>
+  <text x="645" y="615" fill="#67e8f9" font-size="12" font-weight="600">Daily capacity constraint:</text>
+  <text x="645" y="635" fill="#94a3b8" font-size="11">Max 20 deliveries per day — emergency and urgent filled first,</text>
+  <text x="645" y="651" fill="#94a3b8" font-size="11">remaining capacity allocated to normal and low priority tanks.</text>
+
+  <text x="645" y="680" fill="#67e8f9" font-size="12" font-weight="600">Result: Optimized daily route with priority ordering.</text>
+
+  <!-- ===== BOTTOM: Key Insight ===== -->
+  <rect x="40" y="720" width="1120" height="110" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="600" y="752" text-anchor="middle" fill="#f8fafc" font-size="16" font-weight="700">Key Insight: Forecast-Driven, Not Rule-Driven</text>
+  <text x="600" y="778" text-anchor="middle" fill="#94a3b8" font-size="13">The optimizer uses probabilistic forecasts (p90) to calculate volume — not a fixed multiplier.</text>
+  <text x="600" y="800" text-anchor="middle" fill="#94a3b8" font-size="13">Each tank gets a custom recommendation based on its own consumption forecast, current level, and capacity.</text>
+  <text x="600" y="822" text-anchor="middle" fill="#6ee7b7" font-size="13" font-weight="600">This means safety margins adapt automatically to seasonal changes, weather, and demand patterns.</text>
+</svg>

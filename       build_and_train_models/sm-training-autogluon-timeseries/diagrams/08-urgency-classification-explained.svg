@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1650" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <filter id="sh8">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="1650" fill="url(#bg8)" rx="12"/>
+
+  <!-- Title -->
+  <text x="600" y="48" text-anchor="middle" fill="#f8fafc" font-size="28" font-weight="700">Urgency Classification System</text>
+  <text x="600" y="78" text-anchor="middle" fill="#94a3b8" font-size="15">How the optimizer decides which tanks need fuel first</text>
+
+  <!-- ===== SECTION 1: The Core Idea ===== -->
+  <rect x="40" y="110" width="1120" height="160" rx="14" fill="#1e293b" stroke="#06b6d4" stroke-width="2" filter="url(#sh8)"/>
+  <rect x="40" y="110" width="1120" height="42" rx="14" fill="#0891b2"/>
+  <rect x="40" y="140" width="1120" height="12" fill="#0891b2"/>
+  <text x="600" y="139" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">The Core Idea</text>
+
+  <text x="70" y="182" fill="#cbd5e1" font-size="14">Urgency is determined by one simple metric: <tspan font-weight="700" fill="#67e8f9">what percentage of the tank is currently full?</tspan></text>
+  <text x="70" y="210" fill="#94a3b8" font-size="13">The formula:</text>
+  <rect x="70" y="220" width="400" height="32" rx="6" fill="#164e63" stroke="#06b6d4" stroke-width="1"/>
+  <text x="270" y="242" text-anchor="middle" fill="#67e8f9" font-size="15" font-weight="700">level_pct = current_level / tank_capacity</text>
+
+  <!-- ===== SECTION 2: The Four Levels ===== -->
+  <rect x="40" y="290" width="1120" height="560" rx="14" fill="#1e293b" stroke="#8b5cf6" stroke-width="2" filter="url(#sh8)"/>
+  <rect x="40" y="290" width="1120" height="42" rx="14" fill="#7c3aed"/>
+  <rect x="40" y="320" width="1120" height="12" fill="#7c3aed"/>
+  <text x="600" y="319" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">The Four Urgency Levels</text>
+
+  <!-- Visual tank gauge -->
+  <rect x="70" y="350" width="1060" height="60" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+
+  <!-- Emergency zone 0-10% -->
+  <rect x="70" y="350" width="106" height="60" rx="8" fill="#ef4444" opacity="0.6"/>
+  <text x="123" y="386" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">0 – 10%</text>
+
+  <!-- Urgent zone 10-25% -->
+  <rect x="176" y="350" width="159" height="60" fill="#f59e0b" opacity="0.5"/>
+  <text x="256" y="386" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">10 – 25%</text>
+
+  <!-- Normal zone 25-40% -->
+  <rect x="335" y="350" width="159" height="60" fill="#3b82f6" opacity="0.4"/>
+  <text x="415" y="386" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">25 – 40%</text>
+
+  <!-- Low zone 40-100% -->
+  <rect x="494" y="350" width="636" height="60" rx="8" fill="#10b981" opacity="0.3"/>
+  <text x="812" y="386" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">40 – 100%</text>
+
+  <!-- Labels -->
+  <text x="123" y="428" text-anchor="middle" fill="#ef4444" font-size="13" font-weight="700">EMERGENCY</text>
+  <text x="256" y="428" text-anchor="middle" fill="#f59e0b" font-size="13" font-weight="700">URGENT</text>
+  <text x="415" y="428" text-anchor="middle" fill="#3b82f6" font-size="13" font-weight="700">NORMAL</text>
+  <text x="812" y="428" text-anchor="middle" fill="#10b981" font-size="13" font-weight="700">LOW</text>
+
+  <!-- ===== EMERGENCY Detail ===== -->
+  <rect x="70" y="455" width="510" height="170" rx="10" fill="#1c0a0a" stroke="#ef4444" stroke-width="2"/>
+  <rect x="85" y="468" width="100" height="26" rx="6" fill="#ef4444"/>
+  <text x="135" y="486" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">EMERGENCY</text>
+  <text x="200" y="486" fill="#fca5a5" font-size="13" font-weight="600">Tank level below 10%</text>
+
+  <text x="85" y="515" fill="#94a3b8" font-size="12" font-weight="600">What it means:</text>
+  <text x="85" y="535" fill="#94a3b8" font-size="12">The tank is nearly empty. At current consumption rates,</text>
+  <text x="85" y="553" fill="#94a3b8" font-size="12">it could run out within 1-3 days.</text>
+
+  <text x="85" y="580" fill="#fca5a5" font-size="12" font-weight="600">Action:</text>
+  <text x="85" y="600" fill="#94a3b8" font-size="12">Deliver immediately. This tank gets top priority in the schedule.</text>
+  <text x="85" y="618" fill="#94a3b8" font-size="12">An emergency delivery truck may need to be dispatched same-day.</text>
+
+  <!-- ===== URGENT Detail ===== -->
+  <rect x="600" y="455" width="530" height="170" rx="10" fill="#1a0f00" stroke="#f59e0b" stroke-width="2"/>
+  <rect x="615" y="468" width="80" height="26" rx="6" fill="#f59e0b"/>
+  <text x="655" y="486" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">URGENT</text>
+  <text x="710" y="486" fill="#fcd34d" font-size="13" font-weight="600">Tank level between 10% and 25%</text>
+
+  <text x="615" y="515" fill="#94a3b8" font-size="12" font-weight="600">What it means:</text>
+  <text x="615" y="535" fill="#94a3b8" font-size="12">The tank is getting low. Without a delivery in the next</text>
+  <text x="615" y="553" fill="#94a3b8" font-size="12">few days, it will drop into emergency territory.</text>
+
+  <text x="615" y="580" fill="#fcd34d" font-size="12" font-weight="600">Action:</text>
+  <text x="615" y="600" fill="#94a3b8" font-size="12">Schedule delivery within 1-2 days. High priority in the daily</text>
+  <text x="615" y="618" fill="#94a3b8" font-size="12">route — filled after any emergency tanks.</text>
+
+  <!-- ===== NORMAL Detail ===== -->
+  <rect x="70" y="640" width="510" height="170" rx="10" fill="#0a0f1e" stroke="#3b82f6" stroke-width="2"/>
+  <rect x="85" y="653" width="80" height="26" rx="6" fill="#3b82f6"/>
+  <text x="125" y="671" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">NORMAL</text>
+  <text x="180" y="671" fill="#93c5fd" font-size="13" font-weight="600">Tank level between 25% and 40%</text>
+
+  <text x="85" y="700" fill="#94a3b8" font-size="12" font-weight="600">What it means:</text>
+  <text x="85" y="720" fill="#94a3b8" font-size="12">The tank has enough fuel for the near term but should be</text>
+  <text x="85" y="738" fill="#94a3b8" font-size="12">refilled soon to maintain optimal levels.</text>
+
+  <text x="85" y="765" fill="#93c5fd" font-size="12" font-weight="600">Action:</text>
+  <text x="85" y="785" fill="#94a3b8" font-size="12">Schedule delivery within 3-5 days. Can be added to a regular</text>
+  <text x="85" y="803" fill="#94a3b8" font-size="12">delivery route without disrupting the schedule.</text>
+
+  <!-- ===== LOW Detail ===== -->
+  <rect x="600" y="640" width="530" height="170" rx="10" fill="#041410" stroke="#10b981" stroke-width="2"/>
+  <rect x="615" y="653" width="55" height="26" rx="6" fill="#10b981"/>
+  <text x="643" y="671" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">LOW</text>
+  <text x="685" y="671" fill="#6ee7b7" font-size="13" font-weight="600">Tank level above 40%</text>
+
+  <text x="615" y="700" fill="#94a3b8" font-size="12" font-weight="600">What it means:</text>
+  <text x="615" y="720" fill="#94a3b8" font-size="12">The tank has plenty of fuel. No delivery needed soon.</text>
+  <text x="615" y="738" fill="#94a3b8" font-size="12">It may still get a top-up if a truck is already in the area.</text>
+
+  <text x="615" y="765" fill="#6ee7b7" font-size="12" font-weight="600">Action:</text>
+  <text x="615" y="785" fill="#94a3b8" font-size="12">Optional — only deliver if there's spare capacity on a route.</text>
+  <text x="615" y="803" fill="#94a3b8" font-size="12">Lowest priority in the daily schedule.</text>
+
+  <!-- ===== SECTION 3: Real Examples ===== -->
+  <rect x="40" y="870" width="1120" height="440" rx="14" fill="#1e293b" stroke="#10b981" stroke-width="2" filter="url(#sh8)"/>
+  <rect x="40" y="870" width="1120" height="42" rx="14" fill="#059669"/>
+  <rect x="40" y="900" width="1120" height="12" fill="#059669"/>
+  <text x="600" y="899" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">Worked Examples: 4 Tanks on the Same Day</text>
+
+  <!-- Tank visualizations -->
+  <!-- Tank 1: Industrial Emergency -->
+  <rect x="70" y="930" width="240" height="360" rx="10" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="190" y="955" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">TANK_0023</text>
+  <text x="190" y="975" text-anchor="middle" fill="#94a3b8" font-size="11">Industrial | 5,000 gal capacity</text>
+
+  <!-- Tank body -->
+  <rect x="110" y="995" width="160" height="200" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <!-- Fuel level (7% → 14px of 200px) -->
+  <rect x="110" y="1181" width="160" height="14" rx="0" fill="#ef4444" opacity="0.8"/>
+  <!-- Level markers -->
+  <line x1="274" y1="1175" x2="280" y2="1175" stroke="#ef4444" stroke-width="1"/>
+  <text x="284" y="1179" fill="#ef4444" font-size="9">10%</text>
+  <line x1="274" y1="1145" x2="280" y2="1145" stroke="#f59e0b" stroke-width="1"/>
+  <text x="284" y="1149" fill="#f59e0b" font-size="9">25%</text>
+
+  <text x="190" y="1135" text-anchor="middle" fill="#ef4444" font-size="24" font-weight="700">7%</text>
+  <text x="190" y="1155" text-anchor="middle" fill="#94a3b8" font-size="11">350 gal remaining</text>
+
+  <rect x="120" y="1205" width="140" height="26" rx="6" fill="#ef4444"/>
+  <text x="190" y="1223" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">EMERGENCY</text>
+  <text x="190" y="1250" text-anchor="middle" fill="#fca5a5" font-size="11">Deliver 3,900 gal TODAY</text>
+  <text x="190" y="1268" text-anchor="middle" fill="#94a3b8" font-size="10">p90: 45 gal/day → 7.8 days left</text>
+
+  <!-- Tank 2: Commercial Urgent -->
+  <rect x="340" y="930" width="240" height="360" rx="10" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="460" y="955" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">TANK_0007</text>
+  <text x="460" y="975" text-anchor="middle" fill="#94a3b8" font-size="11">Commercial | 1,000 gal capacity</text>
+
+  <!-- Tank body -->
+  <rect x="380" y="995" width="160" height="200" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <!-- Fuel level (18% → 36px) -->
+  <rect x="380" y="1159" width="160" height="36" rx="0" fill="#f59e0b" opacity="0.7"/>
+  <line x1="544" y1="1175" x2="550" y2="1175" stroke="#ef4444" stroke-width="1"/>
+  <text x="554" y="1179" fill="#ef4444" font-size="9">10%</text>
+  <line x1="544" y1="1145" x2="550" y2="1145" stroke="#f59e0b" stroke-width="1"/>
+  <text x="554" y="1149" fill="#f59e0b" font-size="9">25%</text>
+
+  <text x="460" y="1125" text-anchor="middle" fill="#f59e0b" font-size="24" font-weight="700">18%</text>
+  <text x="460" y="1145" text-anchor="middle" fill="#94a3b8" font-size="11">180 gal remaining</text>
+
+  <rect x="390" y="1205" width="140" height="26" rx="6" fill="#f59e0b"/>
+  <text x="460" y="1223" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">URGENT</text>
+  <text x="460" y="1250" text-anchor="middle" fill="#fcd34d" font-size="11">Deliver 670 gal in 1-2 days</text>
+  <text x="460" y="1268" text-anchor="middle" fill="#94a3b8" font-size="10">p90: 18 gal/day → 10 days left</text>
+
+  <!-- Tank 3: Residential Normal -->
+  <rect x="610" y="930" width="240" height="360" rx="10" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="730" y="955" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">TANK_0001</text>
+  <text x="730" y="975" text-anchor="middle" fill="#94a3b8" font-size="11">Residential | 275 gal capacity</text>
+
+  <!-- Tank body -->
+  <rect x="650" y="995" width="160" height="200" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <!-- Fuel level (32% → 64px) -->
+  <rect x="650" y="1131" width="160" height="64" rx="0" fill="#3b82f6" opacity="0.5"/>
+  <line x1="814" y1="1175" x2="820" y2="1175" stroke="#ef4444" stroke-width="1"/>
+  <text x="824" y="1179" fill="#ef4444" font-size="9">10%</text>
+  <line x1="814" y1="1145" x2="820" y2="1145" stroke="#f59e0b" stroke-width="1"/>
+  <text x="824" y="1149" fill="#f59e0b" font-size="9">25%</text>
+
+  <text x="730" y="1115" text-anchor="middle" fill="#3b82f6" font-size="24" font-weight="700">32%</text>
+  <text x="730" y="1135" text-anchor="middle" fill="#94a3b8" font-size="11">88 gal remaining</text>
+
+  <rect x="660" y="1205" width="140" height="26" rx="6" fill="#3b82f6"/>
+  <text x="730" y="1223" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">NORMAL</text>
+  <text x="730" y="1250" text-anchor="middle" fill="#93c5fd" font-size="11">Deliver 146 gal in 3-5 days</text>
+  <text x="730" y="1268" text-anchor="middle" fill="#94a3b8" font-size="10">p90: 6.5 gal/day → 13 days left</text>
+
+  <!-- Tank 4: Residential Low -->
+  <rect x="880" y="930" width="240" height="360" rx="10" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="1000" y="955" text-anchor="middle" fill="#f8fafc" font-size="13" font-weight="700">TANK_0015</text>
+  <text x="1000" y="975" text-anchor="middle" fill="#94a3b8" font-size="11">Residential | 275 gal capacity</text>
+
+  <!-- Tank body -->
+  <rect x="920" y="995" width="160" height="200" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <!-- Fuel level (72% → 144px) -->
+  <rect x="920" y="1051" width="160" height="144" rx="0" fill="#10b981" opacity="0.35"/>
+  <line x1="1084" y1="1175" x2="1090" y2="1175" stroke="#ef4444" stroke-width="1"/>
+  <text x="1094" y="1179" fill="#ef4444" font-size="9">10%</text>
+  <line x1="1084" y1="1145" x2="1090" y2="1145" stroke="#f59e0b" stroke-width="1"/>
+  <text x="1094" y="1149" fill="#f59e0b" font-size="9">25%</text>
+
+  <text x="1000" y="1095" text-anchor="middle" fill="#10b981" font-size="24" font-weight="700">72%</text>
+  <text x="1000" y="1115" text-anchor="middle" fill="#94a3b8" font-size="11">198 gal remaining</text>
+
+  <rect x="930" y="1205" width="140" height="26" rx="6" fill="#10b981"/>
+  <text x="1000" y="1223" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">LOW</text>
+  <text x="1000" y="1250" text-anchor="middle" fill="#6ee7b7" font-size="11">No delivery needed</text>
+  <text x="1000" y="1268" text-anchor="middle" fill="#94a3b8" font-size="10">p90: 5.8 gal/day → 34 days left</text>
+
+  <!-- ===== SECTION 4: Scheduling Priority ===== -->
+  <rect x="40" y="1340" width="1120" height="290" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="2" filter="url(#sh8)"/>
+  <rect x="40" y="1340" width="1120" height="42" rx="14" fill="#d97706"/>
+  <rect x="40" y="1370" width="1120" height="12" fill="#d97706"/>
+  <text x="600" y="1369" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">How the Scheduler Uses Urgency</text>
+
+  <text x="70" y="1412" fill="#cbd5e1" font-size="14">The <tspan font-weight="700" fill="#fcd34d">DeliveryScheduler</tspan> processes all tanks and builds an optimized daily route:</text>
+
+  <!-- Step 1 -->
+  <rect x="70" y="1430" width="32" height="32" rx="16" fill="#d97706"/>
+  <text x="86" y="1452" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">1</text>
+  <text x="120" y="1452" fill="#fcd34d" font-size="13" font-weight="600">Classify every tank</text>
+  <text x="120" y="1472" fill="#94a3b8" font-size="12">Calculate level_pct for each tank → assign emergency / urgent / normal / low</text>
+
+  <!-- Step 2 -->
+  <rect x="70" y="1485" width="32" height="32" rx="16" fill="#d97706"/>
+  <text x="86" y="1507" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">2</text>
+  <text x="120" y="1507" fill="#fcd34d" font-size="13" font-weight="600">Sort by urgency priority</text>
+  <text x="120" y="1527" fill="#94a3b8" font-size="12">Emergency first, then urgent, then normal, then low. Within each level, lower level_pct goes first.</text>
+
+  <!-- Step 3 -->
+  <rect x="70" y="1540" width="32" height="32" rx="16" fill="#d97706"/>
+  <text x="86" y="1562" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">3</text>
+  <text x="120" y="1562" fill="#fcd34d" font-size="13" font-weight="600">Apply daily capacity limit</text>
+  <text x="120" y="1582" fill="#94a3b8" font-size="12">Max 20 deliveries per day. If more than 20 tanks need fuel, the lowest-priority ones wait until tomorrow.</text>
+
+  <!-- Step 4 -->
+  <rect x="70" y="1595" width="32" height="32" rx="16" fill="#d97706"/>
+  <text x="86" y="1617" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">4</text>
+  <text x="120" y="1617" fill="#fcd34d" font-size="13" font-weight="600">Output: prioritized delivery schedule</text>
+  <text x="120" y="1637" fill="#94a3b8" font-size="12">Each entry has: tank_id, urgency, volume (gal), fill %, coverage days, and reasoning explanation.</text>
+</svg>

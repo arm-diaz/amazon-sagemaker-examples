@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <filter id="sh7">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="1400" fill="url(#bg7)" rx="12"/>
+
+  <!-- Title -->
+  <text x="600" y="48" text-anchor="middle" fill="#f8fafc" font-size="28" font-weight="700">Understanding Quantile Forecasts (p10 – p90)</text>
+  <text x="600" y="78" text-anchor="middle" fill="#94a3b8" font-size="15">Why probabilistic forecasts are better than single-point predictions</text>
+
+  <!-- ===== SECTION 1: What is a Quantile? ===== -->
+  <rect x="40" y="110" width="1120" height="340" rx="14" fill="#1e293b" stroke="#3b82f6" stroke-width="2" filter="url(#sh7)"/>
+  <rect x="40" y="110" width="1120" height="42" rx="14" fill="#2563eb"/>
+  <rect x="40" y="140" width="1120" height="12" fill="#2563eb"/>
+  <text x="600" y="139" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">What Are Quantiles?</text>
+
+  <text x="70" y="185" fill="#cbd5e1" font-size="14">A <tspan font-weight="700" fill="#93c5fd">quantile</tspan> tells you: "There is an X% chance the actual value will be <tspan font-weight="700" fill="#93c5fd">at or below</tspan> this number."</text>
+  <text x="70" y="210" fill="#94a3b8" font-size="13">Instead of one prediction, our model gives 5 predictions — each representing a different confidence level.</text>
+
+  <!-- Quantile table -->
+  <!-- Header -->
+  <rect x="70" y="235" width="1060" height="35" rx="6" fill="#1e3a5f"/>
+  <text x="170" y="258" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="700">Quantile</text>
+  <text x="360" y="258" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="700">Meaning</text>
+  <text x="620" y="258" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="700">Example (Tank TANK_0001)</text>
+  <text x="900" y="258" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="700">Use Case</text>
+
+  <!-- p10 -->
+  <rect x="70" y="274" width="1060" height="35" rx="0" fill="#0f172a" opacity="0.5"/>
+  <rect x="90" y="280" width="50" height="22" rx="4" fill="#3b82f6" opacity="0.3" stroke="#3b82f6" stroke-width="1"/>
+  <text x="115" y="296" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="700">p10</text>
+  <text x="200" y="296" fill="#94a3b8" font-size="11">90% chance actual is <tspan font-weight="600" fill="#cbd5e1">above</tspan> this</text>
+  <text x="550" y="296" fill="#94a3b8" font-size="11">3.1 gal/day</text>
+  <text x="750" y="296" fill="#94a3b8" font-size="11">Best case — low consumption day</text>
+
+  <!-- p25 -->
+  <rect x="70" y="309" width="1060" height="35" rx="0" fill="#1e293b" opacity="0.3"/>
+  <rect x="90" y="315" width="50" height="22" rx="4" fill="#8b5cf6" opacity="0.3" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="115" y="331" text-anchor="middle" fill="#c4b5fd" font-size="12" font-weight="700">p25</text>
+  <text x="200" y="331" fill="#94a3b8" font-size="11">75% chance actual is <tspan font-weight="600" fill="#cbd5e1">above</tspan> this</text>
+  <text x="550" y="331" fill="#94a3b8" font-size="11">4.0 gal/day</text>
+  <text x="750" y="331" fill="#94a3b8" font-size="11">Optimistic estimate</text>
+
+  <!-- p50 -->
+  <rect x="70" y="344" width="1060" height="35" rx="0" fill="#064e3b" opacity="0.3"/>
+  <rect x="90" y="350" width="50" height="22" rx="4" fill="#10b981" opacity="0.4" stroke="#10b981" stroke-width="1.5"/>
+  <text x="115" y="366" text-anchor="middle" fill="#6ee7b7" font-size="12" font-weight="700">p50</text>
+  <text x="200" y="366" fill="#6ee7b7" font-size="12" font-weight="600">The median — equally likely above or below</text>
+  <text x="550" y="366" fill="#6ee7b7" font-size="12" font-weight="600">5.2 gal/day</text>
+  <text x="750" y="366" fill="#6ee7b7" font-size="12" font-weight="600">Best single estimate (≈ mean)</text>
+
+  <!-- p75 -->
+  <rect x="70" y="379" width="1060" height="35" rx="0" fill="#1e293b" opacity="0.3"/>
+  <rect x="90" y="385" width="50" height="22" rx="4" fill="#f59e0b" opacity="0.3" stroke="#f59e0b" stroke-width="1"/>
+  <text x="115" y="401" text-anchor="middle" fill="#fcd34d" font-size="12" font-weight="700">p75</text>
+  <text x="200" y="401" fill="#94a3b8" font-size="11">75% chance actual is <tspan font-weight="600" fill="#cbd5e1">below</tspan> this</text>
+  <text x="550" y="401" fill="#94a3b8" font-size="11">6.4 gal/day</text>
+  <text x="750" y="401" fill="#94a3b8" font-size="11">Moderately conservative</text>
+
+  <!-- p90 -->
+  <rect x="70" y="414" width="1060" height="35" rx="0" fill="#450a0a" opacity="0.3"/>
+  <rect x="90" y="420" width="50" height="22" rx="4" fill="#ef4444" opacity="0.4" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="115" y="436" text-anchor="middle" fill="#fca5a5" font-size="12" font-weight="700">p90</text>
+  <text x="200" y="436" fill="#fca5a5" font-size="12" font-weight="600">90% chance actual is below this</text>
+  <text x="550" y="436" fill="#fca5a5" font-size="12" font-weight="600">7.1 gal/day</text>
+  <text x="750" y="436" fill="#fca5a5" font-size="12" font-weight="600">We use this for delivery planning</text>
+
+  <!-- ===== SECTION 2: Visual Example ===== -->
+  <rect x="40" y="470" width="1120" height="320" rx="14" fill="#1e293b" stroke="#8b5cf6" stroke-width="2" filter="url(#sh7)"/>
+  <rect x="40" y="470" width="1120" height="42" rx="14" fill="#7c3aed"/>
+  <rect x="40" y="500" width="1120" height="12" fill="#7c3aed"/>
+  <text x="600" y="499" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">Concrete Example: TANK_0001 (Residential, 275 gal)</text>
+
+  <text x="70" y="540" fill="#cbd5e1" font-size="13">If the model forecasts 10 days of consumption for this tank, here is what each quantile means in gallons:</text>
+
+  <!-- 10-day totals -->
+  <rect x="70" y="560" width="1060" height="35" rx="6" fill="#1e3a5f"/>
+  <text x="170" y="582" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">Quantile</text>
+  <text x="320" y="582" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">Avg gal/day</text>
+  <text x="470" y="582" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">10-Day Total</text>
+  <text x="680" y="582" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">Interpretation</text>
+  <text x="1000" y="582" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="700">Days of Supply Left*</text>
+
+  <rect x="70" y="598" width="1060" height="30" rx="0" fill="#0f172a" opacity="0.4"/>
+  <text x="170" y="618" text-anchor="middle" fill="#93c5fd" font-size="12" font-weight="600">p10 (optimistic)</text>
+  <text x="320" y="618" text-anchor="middle" fill="#94a3b8" font-size="12">3.1</text>
+  <text x="470" y="618" text-anchor="middle" fill="#94a3b8" font-size="12">31 gal</text>
+  <text x="680" y="618" text-anchor="middle" fill="#94a3b8" font-size="11">Only 10% chance it'll be this low</text>
+  <text x="1000" y="618" text-anchor="middle" fill="#94a3b8" font-size="12">58 days</text>
+
+  <rect x="70" y="628" width="1060" height="30" rx="0" fill="#1e293b" opacity="0.3"/>
+  <text x="170" y="648" text-anchor="middle" fill="#6ee7b7" font-size="12" font-weight="600">p50 (median)</text>
+  <text x="320" y="648" text-anchor="middle" fill="#6ee7b7" font-size="12">5.2</text>
+  <text x="470" y="648" text-anchor="middle" fill="#6ee7b7" font-size="12">52 gal</text>
+  <text x="680" y="648" text-anchor="middle" fill="#94a3b8" font-size="11">Most likely outcome</text>
+  <text x="1000" y="648" text-anchor="middle" fill="#6ee7b7" font-size="12">35 days</text>
+
+  <rect x="70" y="658" width="1060" height="30" rx="0" fill="#450a0a" opacity="0.3"/>
+  <text x="170" y="678" text-anchor="middle" fill="#fca5a5" font-size="12" font-weight="600">p90 (conservative)</text>
+  <text x="320" y="678" text-anchor="middle" fill="#fca5a5" font-size="12">7.1</text>
+  <text x="470" y="678" text-anchor="middle" fill="#fca5a5" font-size="12">71 gal</text>
+  <text x="680" y="678" text-anchor="middle" fill="#fca5a5" font-size="11">90% sure it won't exceed this</text>
+  <text x="1000" y="678" text-anchor="middle" fill="#fca5a5" font-size="12">25 days</text>
+
+  <text x="70" y="715" fill="#64748b" font-size="11" font-style="italic">* Days of supply = current_level (180 gal) / avg daily consumption at that quantile</text>
+
+  <!-- Key insight box -->
+  <rect x="70" y="730" width="1060" height="48" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="600" y="752" text-anchor="middle" fill="#6ee7b7" font-size="14" font-weight="700">Why we use p90 for delivery planning:</text>
+  <text x="600" y="772" text-anchor="middle" fill="#a7f3d0" font-size="13">If we plan for p90, there is only a 10% chance consumption exceeds our plan — protecting against stockouts.</text>
+
+  <!-- ===== SECTION 3: Why Not Just Use the Average? ===== -->
+  <rect x="40" y="810" width="1120" height="260" rx="14" fill="#1e293b" stroke="#f59e0b" stroke-width="2" filter="url(#sh7)"/>
+  <rect x="40" y="810" width="1120" height="42" rx="14" fill="#d97706"/>
+  <rect x="40" y="840" width="1120" height="12" fill="#d97706"/>
+  <text x="600" y="839" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">Why Not Just Use the Average? (p50 vs p90)</text>
+
+  <!-- Scenario comparison -->
+  <text x="70" y="882" fill="#cbd5e1" font-size="14" font-weight="600">Scenario: Tank at 80 gal, capacity 275 gal. We need to decide how much fuel to deliver.</text>
+
+  <!-- Average approach -->
+  <rect x="70" y="900" width="510" height="150" rx="10" fill="#4a3000" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="325" y="925" text-anchor="middle" fill="#fcd34d" font-size="14" font-weight="700">Using p50 (average): 5.2 gal/day</text>
+  <text x="90" y="950" fill="#94a3b8" font-size="12">Expected 10-day consumption: 52 gal</text>
+  <text x="90" y="970" fill="#94a3b8" font-size="12">Deliver: 275 x 0.85 - 80 = <tspan fill="#fcd34d" font-weight="600">154 gal</tspan></text>
+  <text x="90" y="990" fill="#94a3b8" font-size="12">Expected end level: 154 + 80 - 52 = 182 gal (66%)</text>
+  <text x="90" y="1015" fill="#f59e0b" font-size="12" font-weight="600">But what if consumption spikes to 7.1 gal/day?</text>
+  <text x="90" y="1035" fill="#fca5a5" font-size="12">Actual end level: 154 + 80 - 71 = 163 gal (59%) — lower than expected</text>
+
+  <!-- p90 approach -->
+  <rect x="600" y="900" width="530" height="150" rx="10" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="865" y="925" text-anchor="middle" fill="#6ee7b7" font-size="14" font-weight="700">Using p90 (conservative): 7.1 gal/day</text>
+  <text x="620" y="950" fill="#94a3b8" font-size="12">Conservative 10-day consumption: 71 gal</text>
+  <text x="620" y="970" fill="#94a3b8" font-size="12">Deliver: 275 x 0.85 - 80 = <tspan fill="#6ee7b7" font-weight="600">154 gal</tspan> (same target fill)</text>
+  <text x="620" y="990" fill="#94a3b8" font-size="12">If consumption is actually 7.1: end level = 163 gal (59%) — still safe</text>
+  <text x="620" y="1015" fill="#6ee7b7" font-size="12" font-weight="600">90% confident the tank won't run low</text>
+  <text x="620" y="1035" fill="#94a3b8" font-size="12">p90 doesn't change the delivery volume — it changes the <tspan fill="#6ee7b7" font-weight="600">urgency</tspan></text>
+
+  <!-- ===== SECTION 4: How p90 Drives Urgency ===== -->
+  <rect x="40" y="1090" width="1120" height="290" rx="14" fill="#1e293b" stroke="#ef4444" stroke-width="2" filter="url(#sh7)"/>
+  <rect x="40" y="1090" width="1120" height="42" rx="14" fill="#dc2626"/>
+  <rect x="40" y="1120" width="1120" height="12" fill="#dc2626"/>
+  <text x="600" y="1119" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">How p90 Drives Urgency Decisions</text>
+
+  <text x="70" y="1160" fill="#cbd5e1" font-size="13">The optimizer uses p90 to estimate how quickly a tank will reach dangerous levels — this determines urgency.</text>
+
+  <!-- Example: Two tanks, same current level, different forecasts -->
+  <text x="70" y="1190" fill="#fca5a5" font-size="14" font-weight="700">Example: Two tanks, both at 25% full — but very different forecasts</text>
+
+  <!-- Tank A -->
+  <rect x="70" y="1210" width="510" height="150" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="325" y="1235" text-anchor="middle" fill="#93c5fd" font-size="14" font-weight="700">Tank A — Residential (stable consumption)</text>
+  <text x="90" y="1260" fill="#94a3b8" font-size="12">Current level: 69 gal / 275 gal (25%)</text>
+  <text x="90" y="1280" fill="#94a3b8" font-size="12">p50 forecast: 4.0 gal/day → runs out in ~17 days</text>
+  <text x="90" y="1300" fill="#94a3b8" font-size="12">p90 forecast: 5.5 gal/day → runs out in ~12 days</text>
+  <text x="90" y="1325" fill="#94a3b8" font-size="12">p90 says plenty of time → </text>
+  <rect x="338" y="1311" width="80" height="22" rx="5" fill="#3b82f6"/>
+  <text x="378" y="1327" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">NORMAL</text>
+  <text x="90" y="1348" fill="#64748b" font-size="11" font-style="italic">Can wait a few days for delivery — schedule at convenience</text>
+
+  <!-- Tank B -->
+  <rect x="600" y="1210" width="530" height="150" rx="10" fill="#0f172a" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="865" y="1235" text-anchor="middle" fill="#fca5a5" font-size="14" font-weight="700">Tank B — Residential (winter spike)</text>
+  <text x="620" y="1260" fill="#94a3b8" font-size="12">Current level: 69 gal / 275 gal (25%)</text>
+  <text x="620" y="1280" fill="#94a3b8" font-size="12">p50 forecast: 6.5 gal/day → runs out in ~10 days</text>
+  <text x="620" y="1300" fill="#94a3b8" font-size="12">p90 forecast: 9.2 gal/day → runs out in ~7 days</text>
+  <text x="620" y="1325" fill="#94a3b8" font-size="12">p90 says high risk of running out → </text>
+  <rect x="890" y="1311" width="80" height="22" rx="5" fill="#ef4444"/>
+  <text x="930" y="1327" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">URGENT</text>
+  <text x="620" y="1348" fill="#64748b" font-size="11" font-style="italic">Needs delivery within 1-2 days — prioritize this tank!</text>
+
+  <!-- Bottom insight -->
+  <rect x="70" y="1368" width="1060" height="4" rx="2" fill="#334155"/>
+</svg>

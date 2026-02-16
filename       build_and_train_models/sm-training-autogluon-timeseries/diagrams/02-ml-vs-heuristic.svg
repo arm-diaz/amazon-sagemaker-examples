@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" font-family="Inter, -apple-system, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="heurGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#b91c1c"/>
+    </linearGradient>
+    <linearGradient id="mlGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#047857"/>
+    </linearGradient>
+    <filter id="sh2">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+    <marker id="arr2" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bg2)" rx="12"/>
+
+  <!-- Title -->
+  <text x="600" y="48" text-anchor="middle" fill="#f8fafc" font-size="26" font-weight="700">Why ML Beats the Heuristic</text>
+  <text x="600" y="76" text-anchor="middle" fill="#94a3b8" font-size="14">Replacing avg_consumption x 1.20 with probabilistic forecasting</text>
+
+  <!-- VS divider -->
+  <line x1="600" y1="100" x2="600" y2="580" stroke="#334155" stroke-width="2" stroke-dasharray="8,4"/>
+  <circle cx="600" cy="160" r="22" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+  <text x="600" y="166" text-anchor="middle" fill="#f8fafc" font-size="14" font-weight="700">VS</text>
+
+  <!-- ===== LEFT: HEURISTIC ===== -->
+  <text x="300" y="120" text-anchor="middle" fill="#fca5a5" font-size="18" font-weight="700">Heuristic Approach</text>
+  <text x="300" y="142" text-anchor="middle" fill="#64748b" font-size="13">avg_consumption x 1.20</text>
+
+  <!-- Formula box -->
+  <rect x="80" y="175" width="440" height="70" rx="10" fill="url(#heurGrad)" filter="url(#sh2)" opacity="0.9"/>
+  <text x="300" y="203" text-anchor="middle" fill="#fff" font-size="16" font-weight="600">delivery = historical_avg x 1.20 x days</text>
+  <text x="300" y="228" text-anchor="middle" fill="#fecaca" font-size="12">Fixed 20% safety factor for all tanks, all seasons</text>
+
+  <!-- Problem 1 -->
+  <rect x="80" y="270" width="440" height="65" rx="8" fill="#1c1917" stroke="#7f1d1d" stroke-width="1.5"/>
+  <text x="110" y="294" fill="#fca5a5" font-size="22">&#x2717;</text>
+  <text x="140" y="296" fill="#fca5a5" font-size="13" font-weight="600">Ignores Seasonality</text>
+  <text x="140" y="318" fill="#94a3b8" font-size="11">Winter heating demand is 30-50% higher than summer.</text>
+  <text x="140" y="332" fill="#94a3b8" font-size="11">A flat average under-delivers in winter, over-delivers in summer.</text>
+
+  <!-- Problem 2 -->
+  <rect x="80" y="350" width="440" height="65" rx="8" fill="#1c1917" stroke="#7f1d1d" stroke-width="1.5"/>
+  <text x="110" y="374" fill="#fca5a5" font-size="22">&#x2717;</text>
+  <text x="140" y="376" fill="#fca5a5" font-size="13" font-weight="600">No Uncertainty Quantification</text>
+  <text x="140" y="398" fill="#94a3b8" font-size="11">Single-point estimate with arbitrary safety margin.</text>
+  <text x="140" y="412" fill="#94a3b8" font-size="11">Can't distinguish high-risk vs low-risk tanks.</text>
+
+  <!-- Problem 3 -->
+  <rect x="80" y="430" width="440" height="65" rx="8" fill="#1c1917" stroke="#7f1d1d" stroke-width="1.5"/>
+  <text x="110" y="454" fill="#fca5a5" font-size="22">&#x2717;</text>
+  <text x="140" y="456" fill="#fca5a5" font-size="13" font-weight="600">One-Size-Fits-All</text>
+  <text x="140" y="478" fill="#94a3b8" font-size="11">Same formula for residential (2-8 gal/day) and industrial (25-60).</text>
+  <text x="140" y="492" fill="#94a3b8" font-size="11">No adaptation to tank type, capacity, or consumption patterns.</text>
+
+  <!-- Problem 4 -->
+  <rect x="80" y="510" width="440" height="65" rx="8" fill="#1c1917" stroke="#7f1d1d" stroke-width="1.5"/>
+  <text x="110" y="534" fill="#fca5a5" font-size="22">&#x2717;</text>
+  <text x="140" y="536" fill="#fca5a5" font-size="13" font-weight="600">Over-Delivery Waste</text>
+  <text x="140" y="558" fill="#94a3b8" font-size="11">20% blanket buffer leads to unnecessary deliveries and fuel waste.</text>
+  <text x="140" y="572" fill="#94a3b8" font-size="11">Higher logistics costs with no safety guarantee.</text>
+
+  <!-- ===== RIGHT: ML APPROACH ===== -->
+  <text x="900" y="120" text-anchor="middle" fill="#6ee7b7" font-size="18" font-weight="700">ML-Driven Approach</text>
+  <text x="900" y="142" text-anchor="middle" fill="#64748b" font-size="13">AutoGluon Ensemble + Delivery Optimizer</text>
+
+  <!-- Formula box -->
+  <rect x="680" y="175" width="440" height="70" rx="10" fill="url(#mlGrad)" filter="url(#sh2)" opacity="0.9"/>
+  <text x="900" y="203" text-anchor="middle" fill="#fff" font-size="16" font-weight="600">delivery = f(forecast_p90, level, capacity)</text>
+  <text x="900" y="228" text-anchor="middle" fill="#a7f3d0" font-size="12">Adaptive per-tank optimization using probabilistic forecasts</text>
+
+  <!-- Advantage 1 -->
+  <rect x="680" y="270" width="440" height="65" rx="8" fill="#0a1f17" stroke="#065f46" stroke-width="1.5"/>
+  <text x="710" y="294" fill="#6ee7b7" font-size="22">&#x2713;</text>
+  <text x="740" y="296" fill="#6ee7b7" font-size="13" font-weight="600">Captures Seasonality + Trends</text>
+  <text x="740" y="318" fill="#94a3b8" font-size="11">Ensemble models learn winter peaks, weekend patterns, holiday effects.</text>
+  <text x="740" y="332" fill="#94a3b8" font-size="11">Adapts forecasts to current conditions automatically.</text>
+
+  <!-- Advantage 2 -->
+  <rect x="680" y="350" width="440" height="65" rx="8" fill="#0a1f17" stroke="#065f46" stroke-width="1.5"/>
+  <text x="710" y="374" fill="#6ee7b7" font-size="22">&#x2713;</text>
+  <text x="740" y="376" fill="#6ee7b7" font-size="13" font-weight="600">Probabilistic Confidence Intervals</text>
+  <text x="740" y="398" fill="#94a3b8" font-size="11">5 quantile levels (p10-p90) quantify delivery risk per tank.</text>
+  <text x="740" y="412" fill="#94a3b8" font-size="11">Uses p90 (conservative) for volume — right safety margin per tank.</text>
+
+  <!-- Advantage 3 -->
+  <rect x="680" y="430" width="440" height="65" rx="8" fill="#0a1f17" stroke="#065f46" stroke-width="1.5"/>
+  <text x="710" y="454" fill="#6ee7b7" font-size="22">&#x2713;</text>
+  <text x="740" y="456" fill="#6ee7b7" font-size="13" font-weight="600">Per-Tank Intelligence</text>
+  <text x="740" y="478" fill="#94a3b8" font-size="11">Individual forecasts account for each tank's unique patterns.</text>
+  <text x="740" y="492" fill="#94a3b8" font-size="11">Urgency levels: emergency, urgent, normal, low — per-tank.</text>
+
+  <!-- Advantage 4 -->
+  <rect x="680" y="510" width="440" height="65" rx="8" fill="#0a1f17" stroke="#065f46" stroke-width="1.5"/>
+  <text x="710" y="534" fill="#6ee7b7" font-size="22">&#x2713;</text>
+  <text x="740" y="536" fill="#6ee7b7" font-size="13" font-weight="600">Optimized Volume &amp; Scheduling</text>
+  <text x="740" y="558" fill="#94a3b8" font-size="11">Delivers right amount at right time — reduces waste and stockouts.</text>
+  <text x="740" y="572" fill="#94a3b8" font-size="11">Multi-tank scheduler respects capacity and priority constraints.</text>
+
+  <!-- ===== BOTTOM: Impact Summary ===== -->
+  <rect x="80" y="610" width="1040" height="120" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="600" y="640" text-anchor="middle" fill="#f8fafc" font-size="16" font-weight="700">Expected Impact</text>
+
+  <!-- Metric boxes -->
+  <rect x="120" y="655" width="200" height="55" rx="8" fill="#064e3b"/>
+  <text x="220" y="677" text-anchor="middle" fill="#6ee7b7" font-size="20" font-weight="700">&#x2193; Volume Waste</text>
+  <text x="220" y="700" text-anchor="middle" fill="#94a3b8" font-size="11">Right-sized deliveries per tank</text>
+
+  <rect x="360" y="655" width="200" height="55" rx="8" fill="#064e3b"/>
+  <text x="460" y="677" text-anchor="middle" fill="#6ee7b7" font-size="20" font-weight="700">&#x2193; Stockouts</text>
+  <text x="460" y="700" text-anchor="middle" fill="#94a3b8" font-size="11">p90 safety catches demand spikes</text>
+
+  <rect x="600" y="655" width="200" height="55" rx="8" fill="#064e3b"/>
+  <text x="700" y="677" text-anchor="middle" fill="#6ee7b7" font-size="20" font-weight="700">&#x2193; Emergency Runs</text>
+  <text x="700" y="700" text-anchor="middle" fill="#94a3b8" font-size="11">Proactive urgency scheduling</text>
+
+  <rect x="840" y="655" width="200" height="55" rx="8" fill="#064e3b"/>
+  <text x="940" y="677" text-anchor="middle" fill="#6ee7b7" font-size="20" font-weight="700">&#x2191; Fill Efficiency</text>
+  <text x="940" y="700" text-anchor="middle" fill="#94a3b8" font-size="11">Target 85% fill, not arbitrary 120%</text>
+</svg>

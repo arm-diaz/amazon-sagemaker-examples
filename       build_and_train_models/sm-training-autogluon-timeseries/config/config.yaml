@@ -1,39 +1,43 @@
-# Demand Forecasting Configuration
-# ================================
+# Fuel Delivery Optimization Configuration
+# ==========================================
 
 aws:
   region: "us-east-1"
   role_arn: ""  # Your SageMaker execution role ARN
   s3_bucket: ""  # Your S3 bucket for data and model artifacts
-  s3_prefix: "demand-forecasting"
+  s3_prefix: "fuel-delivery-optimization"
 
 data:
   # Data paths
   train_path: "data/train.csv"
   test_path: "data/test.csv"
-  
+
   # Column names
-  item_id_column: "item_id"
-  timestamp_column: "timestamp"
-  target_column: "target"
-  
+  item_id_column: "tank_id"
+  timestamp_column: "reading_date"
+  target_column: "daily_consumption"
+
   # Optional feature columns
-  static_features: []  # e.g., ["category", "brand", "region"]
-  known_covariates: []  # e.g., ["price", "promotion", "holiday"]
-  
+  static_features: ["tank_type"]
+  known_covariates: []
+
   # Time series configuration
-  freq: "D"  # D=daily, W=weekly, M=monthly, H=hourly
+  freq: "D"  # Daily readings
   date_format: "%Y-%m-%d"
+
+holidays:
+  country: "US"
+  state: null  # Set to two-letter state code (e.g., "TX") for state holidays
 
 model:
   # Forecast configuration
-  prediction_length: 30  # Number of time steps to forecast
-  
+  prediction_length: 10  # 10-day delivery planning horizon
+
   # AutoGluon settings
-  presets: "medium_quality"  # Options: fast_training, medium_quality, high_quality, best_quality
-  time_limit: 3600  # Training time limit in seconds
-  
-  # Model selection (set to null to use all)
+  presets: "medium_quality"
+  time_limit: 3600  # seconds
+
+  # Model selection (null uses all available)
   models:
     - DeepAR
     - ETS
@@ -43,7 +47,7 @@ model:
     - RecursiveTabular
     - DirectTabular
     - TemporalFusionTransformer
-  
+
   # Hyperparameters (optional, AutoGluon will tune if not specified)
   hyperparameters:
     DeepAR:
@@ -54,51 +58,61 @@ model:
       hidden_size: 32
       num_heads: 4
 
+optimization:
+  # Tank capacity constraints
+  min_delivery_gallons: 100
+  max_delivery_gallons: 3000
+  safety_buffer_days: 2  # Extra days of inventory to maintain
+  target_fill_pct: 0.85  # Target fill percentage after delivery
+  reorder_pct: 0.25  # Reorder when tank drops below this percentage
+  emergency_pct: 0.10  # Emergency delivery threshold
+
+  # Scheduling
+  max_deliveries_per_day: 20
+  lead_time_days: 1  # Minimum days between order and delivery
+
 training:
   # SageMaker training configuration
   instance_type: "ml.m5.xlarge"
   instance_count: 1
   volume_size: 50  # GB
   max_runtime: 86400  # seconds (24 hours)
-  
-  # Hyperparameter tuning
-  enable_tuning: false
-  tuning_jobs: 10
-  
+
   # Data splits
   validation_split: 0.2
-  
+
   # Checkpointing
   enable_checkpointing: true
   checkpoint_interval: 300  # seconds
 
 inference:
   # Endpoint configuration
-  endpoint_name: "demand-forecast-endpoint"
+  endpoint_name: "fuel-delivery-forecast-endpoint"
   instance_type: "ml.m5.large"
   instance_count: 1
-  
+
   # Batch transform settings
   batch_instance_type: "ml.m5.xlarge"
   max_concurrent_transforms: 4
   max_payload: 6  # MB
-  
+
   # Output configuration
-  quantiles: [0.1, 0.25, 0.5, 0.75, 0.9]  # Prediction intervals
+  quantiles: [0.1, 0.25, 0.5, 0.75, 0.9]
 
 evaluation:
   metrics:
-    - MASE  # Mean Absolute Scaled Error
-    - RMSE  # Root Mean Squared Error
-    - MAPE  # Mean Absolute Percentage Error
-    - WAPE  # Weighted Absolute Percentage Error
-    - sMAPE  # Symmetric MAPE
-  
-  # Backtesting
+    - MASE
+    - RMSE
+    - MAPE
+    - WAPE
+    - sMAPE
+
+backtesting:
+  step_days: 10  # Slide window by this many days each iteration
+  retrain_frequency: 30  # Retrain model every N days (0 = never retrain)
   num_backtests: 3
-  backtest_windows: null  # Auto-calculate based on prediction_length
 
 logging:
   level: "INFO"
   log_to_cloudwatch: true
-  log_group: "/aws/sagemaker/demand-forecasting"
+  log_group: "/aws/sagemaker/fuel-delivery-optimization"
